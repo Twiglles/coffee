@@ -1,6 +1,6 @@
 'use strict';
 (() => {
-  const EXT="";
+  const EXT="https://script.google.com/macros/s/AKfycbxwBs2WEuYhhreOoNMtJlWqVPifKBD8ky_pLF1BA2YHiz37lBci0PJ1uhhl4O5S5xYWdg/exec";
   const counter=document.getElementById('route-visits'),value=document.getElementById('route-visit-count');
   let counts={};const current=2;
   const render=()=>{const total=counts[current];value.textContent=Number.isSafeInteger(total)&&total>=0?new Intl.NumberFormat('ru-RU').format(total):'—';counter.setAttribute('aria-label',Number.isSafeInteger(total)?'Открытий этого маршрута по QR-коду: '+total:'Счётчик открытий по QR-коду недоступен');};
