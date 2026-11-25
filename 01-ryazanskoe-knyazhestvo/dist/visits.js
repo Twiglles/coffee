@@ -4,7 +4,7 @@
   const counter=document.getElementById('route-visits'),value=document.getElementById('route-visit-count');
   let counts={};const current=1;
   const render=()=>{const total=counts[current];value.textContent=Number.isSafeInteger(total)&&total>=0?new Intl.NumberFormat('ru-RU').format(total):'—';counter.setAttribute('aria-label',Number.isSafeInteger(total)?'Открытий этого маршрута по QR-коду: '+total:'Счётчик открытий по QR-коду недоступен');};
-  const load=async()=>{try{const response=await fetch(EXT?EXT+"?t="+Date.now():'./api/route-visits',{cache:'no-store',credentials:'omit'});if(!response.ok)throw new Error('counter');const body=await response.json();for(const [key,total] of Object.entries(body.counts||{}))if(Number.isSafeInteger(total)&&total>=0)counts[key]=Math.max(counts[key]||0,total);}catch{}render();};
+  const load=async()=>{try{const response=await fetch(EXT?EXT+"?t="+Date.now():'./api/route-visits',{cache:'no-store',credentials:'omit'});if(!response.ok)throw new Error('counter');const body=await response.json();for(const [key,total] of Object.entries(body.counts||{}))if(Number.isSafeInteger(total)&&total>=0)counts[key]=Math.max(counts[key]||0,total);if(!(current in counts))counts[current]=0;}catch{}render();};
   const entry=new URL(window.location.href);
   const qr=entry.searchParams.get('from')==='qr';
   const hasRouteParameter=entry.searchParams.has('route');entry.searchParams.delete('route');

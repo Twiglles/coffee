@@ -220,14 +220,14 @@
     watchId=navigator.geolocation.watchPosition(locationSuccess,locationError,{enableHighAccuracy:true,timeout:15000,maximumAge:10000});
   }
   function enableLocation(){closeDescription();locationNeedsCenter=true;startLocationWatch();}
-  locationButton.addEventListener('click',()=>{if(locationWanted){stopLocation();showNotice('Показ местоположения выключен.');}else if(!data)showNotice('Дождитесь загрузки карты.');else if(!geoConsent){positionGeoIntro();let geoChoice=null;try{geoChoice=localStorage.getItem('geo-choice')}catch{}if(geoChoice=='allow')geoConsent=true;if(!geoChoice)geoIntro.showModal();}else enableLocation();});
+  locationButton.addEventListener('click',()=>{if(locationWanted){stopLocation();showNotice('Показ местоположения выключен.');}else if(!data)showNotice('Дождитесь загрузки карты.');else if(!geoConsent){positionGeoIntro();geoIntro.showModal();}else enableLocation();});
   function positionGeoIntro(){const r=document.querySelector('.experience').getBoundingClientRect();geoIntro.style.left=r.left+'px';geoIntro.style.width=r.width+'px';geoIntro.style.bottom=Math.max(0,window.innerHeight-r.bottom)+'px';}
   document.getElementById('geo-intro-allow').addEventListener('click',()=>{try{localStorage.setItem('geo-choice','allow')}catch{}geoConsent=true;geoIntro.close();enableLocation();});
   document.getElementById('geo-intro-later').addEventListener('click',()=>{try{localStorage.setItem('geo-choice','later')}catch{}geoIntro.close();});
   geoIntro.addEventListener('close',()=>locationButton.focus({preventScroll:true}));
   geoIntro.addEventListener('click',e=>{const r=geoIntro.getBoundingClientRect();if(e.target===geoIntro&&(e.clientY<r.top||e.clientY>r.bottom||e.clientX<r.left||e.clientX>r.right))geoIntro.close();});
   window.addEventListener('resize',()=>{if(geoIntro.open)positionGeoIntro();});
-  positionGeoIntro();geoIntro.showModal();
+  positionGeoIntro();let geoChoice=null;try{geoChoice=localStorage.getItem('geo-choice')}catch{}if(geoChoice=='allow')geoConsent=true;if(!geoChoice)geoIntro.showModal();
   document.addEventListener('visibilitychange',()=>{if(document.hidden){clearLocationWatch();pointers.clear();gestureStart=null;}else{resize();if(locationWanted&&watchId===null)startLocationWatch();}});window.addEventListener('pagehide',clearLocationWatch);
   window.addEventListener('pageshow',()=>{if(data)resize();});
   canvas.addEventListener('contextlost',e=>e.preventDefault());canvas.addEventListener('contextrestored',()=>{if(data){resize();schedule();}});
