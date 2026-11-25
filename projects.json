@@ -1,0 +1,37 @@
+[
+  {
+    "folder": "01-ryazanskoe-knyazhestvo",
+    "number": 1,
+    "id": "principality",
+    "title": "Рязанское княжество",
+    "slug": "01-ryazanskoe-knyazhestvo"
+  },
+  {
+    "folder": "02-ryazan-kotoruyu-my-teryaem",
+    "number": 2,
+    "id": "wooden-city",
+    "title": "Рязань, которую мы теряем",
+    "slug": "02-ryazan-kotoruyu-my-teryaem"
+  },
+  {
+    "folder": "03-ryazan-serebryanogo-veka",
+    "number": 3,
+    "id": "silver-age",
+    "title": "Рязань Серебряного века",
+    "slug": "03-ryazan-serebryanogo-veka"
+  },
+  {
+    "folder": "04-sovetskiy-shik",
+    "number": 4,
+    "id": "soviet-city",
+    "title": "Советский шик города Р.",
+    "slug": "04-sovetskiy-shik"
+  },
+  {
+    "folder": "05-ryazan-saltykova-shchedrina",
+    "number": 5,
+    "id": "saltykov",
+    "title": "Рязань Салтыкова-Щедрина",
+    "slug": "05-ryazan-saltykova-shchedrina"
+  }
+]

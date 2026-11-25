@@ -1,0 +1,8 @@
+dist/server/
+dist/.openai/
+dist/privacy.html
+dist/consent.html
+.data/
+node_modules/
+.env*
+.dev.vars*

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2c2929">
+  <meta name="description" content="От чашки кофе — к архитектуре и историям города начала XX века.">
+  <title>Рязань Серебряного века — Маршрут перестроен</title>
+  <link rel="preload" href="./assets/benzin-semibold.otf" as="font" type="font/otf" crossorigin>
+  <link rel="preload" href="./assets/montserrat-medium.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="stylesheet" href="./style.css?v=single-route-1">
+</head>
+<body>
+  <main class="experience" aria-label="Twiglles × Coffee Like. Маршрут перестроен">
+    <header class="masthead">
+      <div class="topbar">
+        <div class="collaboration" aria-label="Twiglles в коллаборации с Coffee Like">
+          <img class="twiglles" src="./assets/twiglles.svg" alt="Twiglles" width="1140" height="232">
+          <span class="collaboration-cross" aria-hidden="true">×</span>
+          <img class="coffee-like" src="./assets/coffee-like.webp" alt="Coffee Like" width="236" height="50">
+        </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Включить светлую тему" aria-pressed="false" title="Переключить цветовую тему"><svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.7"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg><svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg></button>
+      </div>
+      <div class="campaign-label"><span>Маршрут перестроен</span></div>
+      <h1><span>Рязань</span><span>Серебряного века</span></h1>
+      <p class="route-description">От чашки кофе — к архитектуре и историям города начала XX века.</p>
+    </header>
+    <section class="map-section" aria-label="Интерактивная карта маршрута">
+      <div class="map-viewport" id="map" tabindex="0" role="region" aria-label="Двумерная карта Рязани. Перетаскивайте для перемещения, используйте два пальца или колесо для масштаба. Стрелки перемещают карту, плюс и минус меняют масштаб, Home показывает весь маршрут.">
+        <canvas id="city-canvas" aria-hidden="true"></canvas>
+        <div class="map-heading" aria-hidden="true"><span class="map-locator"><svg viewBox="0 0 20 20"><path d="M10 17s5-5.3 5-9A5 5 0 0 0 5 8c0 3.7 5 9 5 9Z"/><circle cx="10" cy="8" r="1.6"/></svg>Рязань</span></div>
+        <button id="route-center" class="map-control route-center-control" aria-label="К маршруту" title="Показать весь маршрут">К маршруту</button>
+        <div class="map-markers" id="markers"></div>
+        <div class="user-location" id="user-location" hidden aria-label="Вы здесь"><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M14 3 24 24 14 19 4 24Z"/></svg><span>Вы здесь</span></div>
+        <article class="map-place-card" id="place-tooltip" role="region" aria-labelledby="place-name" hidden><button class="place-close" id="close-place" aria-label="Закрыть описание"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 5 10 10M5 15 15 5"/></svg></button><div id="place-card-scroll" class="map-card-scroll"><h2 id="place-name">Coffee Like</h2><p id="place-address" class="map-card-address">ул. Краснорядская, 3</p><p id="place-description" class="map-card-description"></p></div></article>
+        <span class="sr-only" id="street-names"></span>
+        <div class="zoom-controls" role="group" aria-label="Масштаб карты"><button id="zoom-in" aria-label="Приблизить карту">+</button><span></span><button id="zoom-out" aria-label="Отдалить карту">−</button></div>
+        <button class="map-control location-control" id="locate-me" aria-label="Показать моё местоположение" aria-pressed="false" title="Моё местоположение"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 3-6.5 18-3.2-7.3L3 10.5Z"/></svg></button>
+        <div class="location-notice" id="location-notice" role="status" hidden></div>
+        <div class="route-facts"><span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="3" r="1.4"/><path d="m5 7 3-2 3 3M8 5l-1 5-2 4m2-4 4 4"/></svg>Пешком</span><i></i><span>5 остановок</span><i></i><span>В своём темпе</span></div>
+        <div class="map-bottom"><span class="scale"><i></i><span id="map-scale">200 м</span></span><span class="map-credit">Пеший маршрут · © OpenStreetMap</span></div>
+        <p class="map-status" id="map-status" role="status">Загружаем карту…</p>
+      </div>
+    </section>
+    <footer class="route-footer">
+      <div class="route-summary"><div class="stop-info"><h2 id="footer-place">Coffee Like</h2><p id="footer-address">ул. Краснорядская, 3</p></div><div id="route-visits" class="route-visits" title="Число открытий этого маршрута по QR-коду. Не число людей, завершивших прогулку."><strong id="route-visit-count">—</strong><span>открытий по QR</span></div></div>
+      <div class="footer-bottom"><div class="route-progress" id="route-progress" aria-hidden="true"><span class="current"></span><span></span><span></span><span></span><span></span></div><a class="privacy-link" href="./privacy" target="_blank" rel="noopener">Политика обработки данных</a></div>
+    </footer>
+    <span class="sr-only" id="selection-announcement" role="status" aria-live="polite"></span>
+    <dialog id="geo-intro" class="geo-sheet" aria-labelledby="geo-intro-title" aria-describedby="geo-intro-copy">
+      <span class="geo-sheet-handle" aria-hidden="true"></span>
+      <div class="geo-sheet-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m20 3-6.5 18-3.2-7.3L3 10.5Z"/></svg></div>
+      <h2 id="geo-intro-title">Покажем вас<br>на карте?</h2>
+      <p id="geo-intro-copy">Геолокация покажет вас на карте. Координаты остаются в браузере и не отправляются на сервер.</p><p class="geo-consent-copy">Нажимая «Согласен, включить», вы даёте <a href="./consent" target="_blank" rel="noopener">согласие на обработку геолокации</a> для показа вашего положения. <a href="./privacy" target="_blank" rel="noopener">Политика обработки персональных данных</a>.</p>
+      <button id="geo-intro-allow" class="geo-sheet-allow">Согласен, включить</button>
+      <button id="geo-intro-later" class="geo-sheet-later">Пока без геолокации</button>
+      <p class="geo-sheet-privacy">Ваше местоположение видно только вам.</p>
+    </dialog>
+  </main>
+  <script src="./map.js?v=single-route-1" defer></script>
+  <script src="./visits.js?v=single-route-1" defer></script>
+</body>
+</html>
+
