@@ -73,3 +73,5 @@ html,body{overscroll-behavior:none}
 .geo-sheet a,.geo-sheet a:focus,.geo-sheet a:focus-visible,.geo-sheet button:focus,.geo-sheet button:focus-visible,.geo-sheet:focus,.geo-sheet:focus-visible{outline:none!important;box-shadow:none}
 
 .geo-sheet>.geo-consent-copy{margin:12px 0 0;text-align:center}
+
+.geo-sheet>.geo-sheet-privacy,.geo-sheet>.geo-consent-copy{text-align:left}
