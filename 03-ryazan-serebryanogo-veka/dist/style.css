@@ -71,3 +71,5 @@ html,body{overscroll-behavior:none}
 .masthead{padding-top:10px}.topbar{margin-bottom:8px;height:26px}.campaign-label{min-height:0;margin-bottom:5px}h1{font-size:clamp(15px,4.5vw,2.5svh);line-height:1.25;margin-bottom:5px}.route-description,.masthead .route-description{font-size:11px;line-height:1.4;min-height:0;margin-bottom:8px}.route-summary{height:60px;min-height:60px}.route-footer{padding-top:4px;padding-bottom:10px}
 
 .geo-sheet a,.geo-sheet a:focus,.geo-sheet a:focus-visible,.geo-sheet button:focus,.geo-sheet button:focus-visible,.geo-sheet:focus,.geo-sheet:focus-visible{outline:none!important;box-shadow:none}
+
+.geo-sheet>.geo-consent-copy{margin:12px 0 0;text-align:center}
